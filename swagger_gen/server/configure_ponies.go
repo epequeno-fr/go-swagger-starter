@@ -47,7 +47,6 @@ func configureAPI(api *restapi.PoniesAPI) http.Handler {
 	handler.Setup(api)
 
 	api.PreServerShutdown = func() {}
-
 	api.ServerShutdown = func() {}
 
 	return setupGlobalMiddleware(api.Serve(setupMiddlewares))
