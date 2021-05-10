@@ -1,0 +1,59 @@
+get:
+  tags:
+    - "Pony"
+  summary: "Get a specific pony"
+  description: "Returns a pony with the specified name."
+  operationId: "getPony"
+  parameters:
+    - $ref: '#/parameters/apiVersion'
+    - name: "name"
+      in: "path"
+      description: "Name of the pony"
+      required: true
+      type: "string"
+  responses:
+    "200":
+      description: "Successful operation"
+      headers:
+        Content-API-Version:
+          type: string
+          description: resource=1.0
+      schema:
+        $ref: "#/definitions/ponyResponse"
+    default:
+      description: Unexpected error
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  tags:
+    - "Pony"
+  summary: "Create or update a pony"
+  description: >
+    Creates or updates a pony with a known name.
+  operationId: "upsertPony"
+  parameters:
+    - $ref: '#/parameters/apiVersion'
+    - name: "name"
+      in: "path"
+      description: "Name of the pony"
+      required: true
+      type: "string"
+    - name: "body"
+      in: "body"      
+      description: "json describing the pony"
+      required: true
+      schema:
+        $ref: "#/definitions/ponyCreateUpdateRequest"
+  responses:
+    "200":
+      description: "Successful operation"
+      headers:
+        Content-API-Version:
+          type: string
+          description: resource=1.0
+      schema:
+        $ref: "#/definitions/ponyResponse"
+    default:
+      description: Unexpected error
+      schema:
+        $ref: "#/definitions/Error"

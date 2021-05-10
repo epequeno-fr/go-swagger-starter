@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Ponies"
+  description: >
+    **Specification for API which does the needful pony things.**
+
+host: "example.ponies.com"
+tags:
+  - name: "Pony"
+    description: >
+      The thing that all decent people strive to obtain.
+schemes:
+  - "https"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /health:
+    $ref: ./health.yaml
+  /ponies/{name}:
+    $ref: ./ponies.yaml
+
+definitions:
+  ponyResponse:
+    type: object
+    properties:
+      name:
+        type: string
+        example: geraldine
+      color:
+        type: string
+        example: lavender
+  ponyCreateUpdateRequest:
+    type: object
+    properties:
+      name:
+        type: string
+        example: jane
+      color:
+        type: string
+        example: wintergreen
+    required:
+      - name
+      - color
+  # Default response
+  default:
+    type: object
+    properties:
+      message:
+        type: string
+  # Health check
+  health:
+    type: object
+    properties:
+      status:
+        type: string        
+  # Default error response
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+      code:
+        type: integer
+  principal:
+    type: object
+    properties:
+      sub:
+        type: string
+      auth_level:
+        type: integer
+      realm:
+        type: string
+
+parameters:
+  apiVersion:
+    in: header
+    name: Accept-API-Version
+    type: string
+    required: true
+    description: protocol=1.0,resource=1.0
+
+securityDefinitions:
+  Oauth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://example.com/oauth/authorize
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      fr:idm:*: Grants access
+
+security:
+  - Oauth2: [ponies:*]

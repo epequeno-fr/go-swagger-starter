@@ -1,0 +1,16 @@
+get:
+  tags:
+    - "Health"
+  summary: ""
+  description: "Check if the service is healthy"
+  operationId: "getHealth"
+  security: []
+  responses:
+    200:
+      description: status of health check
+      schema:
+        $ref: "#/definitions/health"
+    default:
+      description: generic error response
+      schema:
+        $ref: "#/definitions/default"

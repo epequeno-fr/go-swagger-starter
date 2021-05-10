@@ -1,0 +1,8 @@
+docs_gen
+swagger_gen/cmd
+swagger_gen/models
+swagger_gen/server/doc.go
+swagger_gen/server/embedded_spec.go
+swagger_gen/server/restapi/pony
+swagger_gen/server/restapi/ponies_api.go
+swagger_gen/server/server.go
