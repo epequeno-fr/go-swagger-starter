@@ -30,11 +30,13 @@ The general process to build your API is:
 
 1. Copy this starter into the monorepo
 2. Define the API spec in the `/swagger` folder
-3. Run `make generate` to generate docs and server
-4. Implement your endpoint handlers
-5. Run a local server with `make run_local` to test
+3. Set your kube context to a valid customer environment (required for authentication with AM)
+4. Run `make generate` to generate docs and server
+5. Implement your endpoint handlers
+6. Run a local server with `make run_local` to test
 
-You can now view API docs at http://127.0.0.1:8080/docs and send sample requests:
+You can now view API docs at http://127.0.0.1:8080/docs. Obtain an access token from your customer environment and
+use it to send requests, for example:
 
 ```bash
 curl http://127.0.0.1:8080/ponies/foo \
