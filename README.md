@@ -75,6 +75,10 @@ These files are generated, and you don't necessarily need to know what they do. 
 
 After you've gotten the skeleton API running, you can:
 
+- change package name from `example.ponies.com` to something appropriate for ID Cloud like: `github.com/ForgeCloud/go/services/...` (see [PR #4221](https://github.com/ForgeCloud/saas/pull/4221/files) for an example)
+  - double check `./swagger_gen/server/configure_ponies.go` has also been updated for package changes since this file is not automatically updated.
+- remove the `go.mod` and `go.sum` files from the starter root directory.
+- generate bazel files as documented in the saas repo README
 - Uncomment AM token introspection in `pkg/auth/authenticator.go`
 - Update the swagger spec and regenerate the API
 - Organize new handlers into packages and hook them up in `pkg/handler/handler.go`
